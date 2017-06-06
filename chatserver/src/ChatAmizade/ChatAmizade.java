@@ -9,6 +9,8 @@ import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -20,13 +22,16 @@ import javax.swing.JTextField;
 
 public class ChatAmizade extends JFrame {
 
+    //DEFINE AS VIEWS PARA ALTERNAR ENTRE JANELAS
     private static final String LOGIN_VIEW = "LOGIN_VIEW";
     private static final String CHAT_VIEW = "CHAT_VIEW";
 
+    //COMPONENTES
     private JTextArea display = new JTextArea(20,30);
-    private JTextField input = new JTextField(53);
+    private JTextField input = new JTextField(25);
     private JButton send = new JButton("Enviar");
 
+    //
     private JTextField nickname = new JTextField(23);
     private JTextField hostname = new JTextField(23);
     private JTextField port = new JTextField(23);
@@ -40,9 +45,10 @@ public class ChatAmizade extends JFrame {
     private ChatClient client;
 
     public ChatAmizade(){
-        setSize(700,600);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setSize(800,700);
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setTitle("Client de Chat");
+        addWindowListener(new CloseListener());
         cards.setLayout(new CardLayout());
         add(cards);
         makeLoginView();
@@ -171,6 +177,22 @@ public class ChatAmizade extends JFrame {
                 display.append("\n");
                 display.setCaretPosition(display.getText().length() - 1);
         }
+    }
+    
+    private class CloseListener extends WindowAdapter {
+        
+        @Override
+        public void windowClosing(WindowEvent e) {
+            if ( client != null ) {
+                try {
+                    client.close();
+                } catch (CommunicationException ex) {
+                    ex.printStackTrace();
+                }
+            }
+            System.exit(0);
+        }
+
     }
 
     public static void main(String[] args) {
