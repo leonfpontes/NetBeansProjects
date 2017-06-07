@@ -12,6 +12,7 @@ public class JogoClique extends JFrame {
     private Alvo a;
     private JTextField input = new JTextField(25);
 
+    @SuppressWarnings({"OverridableMethodCallInConstructor", "CallToThreadStartDuringObjectConstruction"})
     public JogoClique(){
         a = new Alvo();
         a.addAlvoListener(new AlvoHandler());
@@ -53,6 +54,7 @@ public class JogoClique extends JFrame {
     private class AlvoThread implements Runnable{
 
         @Override
+        @SuppressWarnings({"SleepWhileInLoop", "CallToPrintStackTrace"})
         public void run() {
             int x;
             int y;
