@@ -49,7 +49,6 @@ public class FtpFileTransferClient implements FileTransfer {
 		ftp.logout();
 	}
 	
-        @Override
 	public boolean connect() throws CommunicationException {
 		boolean success = false;
 		try {
@@ -61,7 +60,6 @@ public class FtpFileTransferClient implements FileTransfer {
 		return success;
 	}
 	
-        @Override
 	public void disconnect() throws CommunicationException {
 		try {
                         logout();
@@ -74,7 +72,6 @@ public class FtpFileTransferClient implements FileTransfer {
 		}
 	}
 	
-        @Override
 	public boolean send(File file) throws CommunicationException {
 		boolean success = false;
 		FileInputStream fis;
@@ -90,7 +87,6 @@ public class FtpFileTransferClient implements FileTransfer {
 		return success;
 	}
 
-        @Override
 	public String[] list() throws CommunicationException {
 		String[] files = null;
 		try {

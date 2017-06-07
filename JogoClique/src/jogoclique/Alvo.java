@@ -27,7 +27,7 @@ public class Alvo extends JPanel {
     }
     
     private class MouseHandler extends MouseAdapter{
-        public void mouseClicked(MouseEvent evt){
+        public void mousePressed(MouseEvent evt){
             numClicks++;
             for (AlvoListener l : listeners){
                 l.alvoClicked(numClicks);

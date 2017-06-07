@@ -1,24 +1,33 @@
 package jogoclique;
 
 import java.awt.Color;
+import java.awt.FlowLayout;
 import java.util.Random;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 public class JogoClique extends JFrame {
-    
+
     private Alvo a;
-    
+    private JTextField input = new JTextField(25);
+
     public JogoClique(){
         a = new Alvo();
         a.addAlvoListener(new AlvoHandler());
-        
-        
+
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setSize(500,400);
+        setResizable(false);
+
+        JPanel scorePanel = new JPanel();
+        scorePanel.setLayout(new FlowLayout(FlowLayout.CENTER));
+        scorePanel.add(input);
+
         JPanel p = new JPanel();
         p.setBackground(Color.red);
-        p.setLayout(null);
+        p.setLayout(new FlowLayout());
+        p.add(scorePanel);
         p.add(a);
         p.setDoubleBuffered(true);
         add(p);
@@ -31,16 +40,16 @@ public class JogoClique extends JFrame {
         JogoClique app = new JogoClique();
         app.setVisible(true);
     }
-    
+
     private class AlvoHandler implements AlvoListener{
 
         @Override
         public void alvoClicked(int numClicks) {
-            System.out.println(String.valueOf(numClicks));
+            input.setText(String.valueOf(numClicks));
         }
-        
+
     }
-    
+
     private class AlvoThread implements Runnable{
 
         @Override
@@ -61,7 +70,7 @@ public class JogoClique extends JFrame {
                 }
             }
         }
-        
+
     }
-    
+
 }
