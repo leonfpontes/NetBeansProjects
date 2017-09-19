@@ -7,11 +7,19 @@ import java.sql.SQLException;
 public class LivroDAO {
     Livro livro = new Livro();
     private Connection con = ConnectionFactory.getConnection();
-    String sql = "sp_CadastraLocacao(?, ?, ?, ?, ?, ?, ?)";
+    
+    //MÉTODO PARA CADASTRAR LOCAÇÃO DO LIVRO
+    public void cadastrarLocacao(){
+        Interface inter = new Interface();
+        String sql = "sp_CadastraLocacao(?, ?, ?, ?, ?, ?, ?)";
 
-    try (PreparedStatement preparestatement = con.prepareStatement(sql)) {
-        preparestatement.setDouble(1, livro.getVnCodLivro()); //substitui o ? pelo dado do usuario
-    }catch (SQLException e){
-        e.printStackTrace();
+        try (PreparedStatement preparestatement = con.prepareStatement(sql)){
+            preparestatement.setDouble(1, livro.getVnCodLivro()); //substitui o ? pelo dado do usuario
+            preparestatement.setInt(2, inter.getDfQtd()); 
+            preparestatement.setInt(3, inter.);
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
+    
 }
