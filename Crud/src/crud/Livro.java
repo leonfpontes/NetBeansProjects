@@ -1,6 +1,9 @@
 package crud;
 
 public class Livro {
+    
+    private String vsNomeLivro, vsNomeAutor;
+    private double vnCodLivro;
 
     public String getVsNomeLivro() {
         return vsNomeLivro;
@@ -25,6 +28,5 @@ public class Livro {
     public void setVnCodLivro(double vnCodLivro) {
         this.vnCodLivro = vnCodLivro;
     }
-    private String vsNomeLivro, vsNomeAutor;
-    private double vnCodLivro;
+
 }
