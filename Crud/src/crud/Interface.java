@@ -218,11 +218,11 @@ public class Interface extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     public int getDfQtd(){
-        return Integer.parseInt(dfQtd.getText()); //TODO
+        return Integer.parseInt(dfQtd.getText());
     }
     
     public int getIDPessoa(){
-        return Integer.parseInt(df.getText()); //TODO
+        return Integer.parseInt(/*dfCodPessoa.getText()*/"1"); //TODO CRIAR CAMPO PARA CÓDIGO DA PESSOA
     }
     /**
      * @param args the command line arguments

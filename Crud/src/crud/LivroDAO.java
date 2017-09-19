@@ -16,7 +16,7 @@ public class LivroDAO {
         try (PreparedStatement preparestatement = con.prepareStatement(sql)){
             preparestatement.setDouble(1, livro.getVnCodLivro()); //substitui o ? pelo dado do usuario
             preparestatement.setInt(2, inter.getDfQtd()); 
-            preparestatement.setInt(3, inter.);
+            preparestatement.setInt(3, inter.); //TODO CRIAR CAMPO PARA CÓDIGO DA PESSOA
         }catch (SQLException e){
             e.printStackTrace();
         }
